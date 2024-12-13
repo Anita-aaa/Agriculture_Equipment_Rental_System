@@ -280,6 +280,53 @@ class LoginView extends StatelessWidget {
                           ),
                         ),
                       ),
+                      SizedBox(height: 20),
+                      Text(
+                        "Continue with social media",
+                        style: TextStyle(color: Colors.grey),
+                      ),
+                      SizedBox(height: 30),
+                      Row(
+                        children: <Widget>[
+                          Expanded(
+                            child: MaterialButton(
+                              onPressed: () {},
+                              height: 50,
+                              color: Colors.blue,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(50),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "Facebook",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: 30),
+                          Expanded(
+                            child: MaterialButton(
+                              onPressed: () {},
+                              height: 50,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(50),
+                              ),
+                              color: Colors.black,
+                              child: Center(
+                                child: Text(
+                                  "Github",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
+                      )
                     ],
                   ),
                 ),
