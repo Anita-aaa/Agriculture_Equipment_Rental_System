@@ -1,9 +1,8 @@
 import 'package:agriculture_equipment_rental_system/view/login_view.dart';
-// import 'package:agriplant/pages/home_page.dart';
+import 'package:agriculture_equipment_rental_system/view/registration_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
-// import 'package:flutter_iconly/flutter_iconly.dart';
 
 class OnboardingPage extends StatelessWidget {
   const OnboardingPage({super.key});
@@ -22,7 +21,7 @@ class OnboardingPage extends StatelessWidget {
                 child: Image.asset('assets/images/onboarding.png'),
               ),
               const Spacer(),
-              Text('Welcome to Agriplant',
+              Text('Welcome to FarmBuddy',
                   style: Theme.of(context)
                       .textTheme
                       .titleLarge
@@ -47,21 +46,12 @@ class OnboardingPage extends StatelessWidget {
               FilledButton.tonalIcon(
                 onPressed: () {
                   Navigator.of(context).pushReplacement(CupertinoPageRoute(
-                      builder: (context) => const LoginView()));
+                      builder: (context) => const RegistrationView()));
                 },
                 icon: const Icon(IconlyLight.login),
                 // icon: const Icon(IconlyLight.login),
                 label: const Text("Register"),
               ),
-              FilledButton.tonalIcon(
-                onPressed: () {
-                  Navigator.of(context).pushReplacement(CupertinoPageRoute(
-                      builder: (context) => const LoginView()));
-                },
-                icon: const Icon(IconlyLight.login),
-                // icon: const Icon(IconlyLight.login),
-                label: const Text(" Dashboard"),
-              )
             ],
           ),
         ),

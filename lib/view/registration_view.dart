@@ -42,7 +42,7 @@
 //                     ],
 //                   ),
 //                 ),
-//                 const SizedBox(height: 80),
+//                 const SizedBox(height: 40), // Reduced the space above the form
 //                 Expanded(
 //                   child: Container(
 //                     width: double.infinity,
@@ -58,7 +58,7 @@
 //                           horizontal: 20, vertical: 10),
 //                       child: Column(
 //                         mainAxisAlignment:
-//                             MainAxisAlignment.center, // Center vertically
+//                             MainAxisAlignment.spaceEvenly, // Align top
 //                         children: <Widget>[
 //                           const SizedBox(height: 20),
 //                           // Full Name Field
@@ -75,7 +75,7 @@
 //                                   horizontal: 20, vertical: 15),
 //                             ),
 //                           ),
-//                           const SizedBox(height: 0),
+//                           const SizedBox(height: 10),
 //                           // Email Field
 //                           TextFormField(
 //                             decoration: InputDecoration(
@@ -87,7 +87,7 @@
 //                                 borderSide: BorderSide.none,
 //                               ),
 //                               contentPadding: const EdgeInsets.symmetric(
-//                                   horizontal: 20, vertical: 15),
+//                                   horizontal: 20, vertical: 5),
 //                             ),
 //                           ),
 //                           const SizedBox(height: 10),
@@ -161,6 +161,7 @@
 //   }
 // }
 
+import 'package:agriculture_equipment_rental_system/view/login_view.dart';
 import 'package:flutter/material.dart';
 
 class RegistrationView extends StatelessWidget {
@@ -205,7 +206,7 @@ class RegistrationView extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: 40), // Reduced the space above the form
+                const SizedBox(height: 40),
                 Expanded(
                   child: Container(
                     width: double.infinity,
@@ -220,8 +221,7 @@ class RegistrationView extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 20, vertical: 10),
                       child: Column(
-                        mainAxisAlignment:
-                            MainAxisAlignment.spaceEvenly, // Align top
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
                           const SizedBox(height: 20),
                           // Full Name Field
@@ -288,7 +288,14 @@ class RegistrationView extends StatelessWidget {
                           const SizedBox(height: 20),
                           // Register Button
                           MaterialButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const LoginView(),
+                                ),
+                              );
+                            },
                             height: 50,
                             minWidth: double.infinity,
                             color: Colors.orange[900],
@@ -305,11 +312,21 @@ class RegistrationView extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(height: 20),
-                          const Text(
-                            "Already have an account? Login",
-                            style: TextStyle(color: Colors.grey),
+                          TextButton(
+                            onPressed: () {
+                              // Navigate to LoginView when clicked on "Already have an account? Login"
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const LoginView(),
+                                ),
+                              );
+                            },
+                            child: const Text(
+                              "Already have an account? Login",
+                              style: TextStyle(color: Colors.grey),
+                            ),
                           ),
-                          const SizedBox(height: 10),
                         ],
                       ),
                     ),

@@ -1,3 +1,5 @@
+import 'package:agriculture_equipment_rental_system/view/home_page.dart';
+import 'package:agriculture_equipment_rental_system/view/registration_view.dart';
 import 'package:flutter/material.dart';
 
 class LoginView extends StatelessWidget {
@@ -111,7 +113,13 @@ class LoginView extends StatelessWidget {
                       ),
                       const SizedBox(height: 40),
                       MaterialButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          // Navigate to HomeScreenView
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => HomePage()),
+                          );
+                        },
                         height: 50,
                         color: Colors.orange[900],
                         shape: RoundedRectangleBorder(
@@ -127,52 +135,24 @@ class LoginView extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 20),
-                      const Text(
-                        "Continue with social media",
-                        style: TextStyle(color: Colors.grey),
-                      ),
-                      const SizedBox(height: 30),
-                      Row(
-                        children: <Widget>[
-                          Expanded(
-                            child: MaterialButton(
-                              onPressed: () {},
-                              height: 50,
-                              color: Colors.blue,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(50),
-                              ),
-                              child: const Center(
-                                child: Text(
-                                  "Facebook",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                            ),
+                      // Register Text with a click event
+                      GestureDetector(
+                        onTap: () {
+                          // Navigate to RegisterView
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => RegistrationView()),
+                          );
+                        },
+                        child: const Text(
+                          "Don't have an account? Register",
+                          style: TextStyle(
+                            color: Colors.orange,
+                            fontSize: 16,
                           ),
-                          const SizedBox(width: 30),
-                          Expanded(
-                            child: MaterialButton(
-                              onPressed: () {},
-                              height: 50,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(50),
-                              ),
-                              color: Colors.black,
-                              child: const Center(
-                                child: Text(
-                                  "Github",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                            ),
-                          )
-                        ],
-                      )
+                        ),
+                      ),
                     ],
                   ),
                 ),
