@@ -153,36 +153,42 @@
 //   }
 // }
 
-// import 'package:agriculture_equipment_rental_system/view/login_view.dart';
-import 'package:agriculture_equipment_rental_system/features/auth/presentation/view/login_view.dart';
+import 'package:agriculture_equipment_rental_system/features/auth/presentation/view_model/signup/register_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class RegistrationView extends StatefulWidget {
   const RegistrationView({super.key});
 
   @override
-  State createState() => _RegistrationViewState();
+  State<RegistrationView> createState() => _RegistrationViewState();
 }
 
 class _RegistrationViewState extends State<RegistrationView> {
-  final _formKey = GlobalKey<FormState>();
-  final _fullNameController = TextEditingController();
-  final _emailController = TextEditingController();
+  final _key = GlobalKey<FormState>();
+  final _fullNameController = TextEditingController(text: 'Anita Thapa');
+  final _phoneController = TextEditingController(text: '12345678');
+  final _emailController = TextEditingController(text: 'anita@gmail.com');
   final _passwordController = TextEditingController();
-  final _confirmPasswordController = TextEditingController();
+  // final _confirmPasswordController = TextEditingController();
 
-  @override
-  void dispose() {
-    _fullNameController.dispose();
-    _emailController.dispose();
-    _passwordController.dispose();
-    _confirmPasswordController.dispose();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   _fullNameController.dispose();
+  //   _emailController.dispose();
+  //   _passwordController.dispose();
+  //   _confirmPasswordController.dispose();
+  //   super.dispose();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title:
+            BlocBuilder<RegisterBloc, RegisterState>(builder: (context, state) {
+          return const Text('Register Student');
+        }),
+      ),
       resizeToAvoidBottomInset: true,
       body: SafeArea(
         child: SingleChildScrollView(
@@ -234,7 +240,7 @@ class _RegistrationViewState extends State<RegistrationView> {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 20, vertical: 10),
                       child: Form(
-                        key: _formKey,
+                        key: _key,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: <Widget>[
@@ -261,6 +267,32 @@ class _RegistrationViewState extends State<RegistrationView> {
                             ),
                             const SizedBox(height: 20),
                             TextFormField(
+                              controller: _phoneController,
+                              keyboardType: TextInputType.phone,
+                              decoration: InputDecoration(
+                                labelText: "Phone Number",
+                                filled: true,
+                                fillColor: Colors.grey[200],
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: BorderSide.none,
+                                ),
+                                contentPadding: const EdgeInsets.symmetric(
+                                    horizontal: 20, vertical: 15),
+                              ),
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please enter your phone number';
+                                } else if (!RegExp(r'^\+?[0-9]{7,15}$')
+                                    .hasMatch(value)) {
+                                  return 'Please enter a valid phone number';
+                                }
+                                return null;
+                              },
+                            ),
+
+                            const SizedBox(height: 20),
+                            TextFormField(
                               controller: _emailController,
                               decoration: InputDecoration(
                                 labelText: "Email",
@@ -279,7 +311,7 @@ class _RegistrationViewState extends State<RegistrationView> {
                                 } else if (!RegExp(
                                         r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}")
                                     .hasMatch(value)) {
-                                  return 'Please enter a valid email address';
+                                  return 'Please enter a valid email';
                                 }
                                 return null;
                               },
@@ -309,39 +341,87 @@ class _RegistrationViewState extends State<RegistrationView> {
                               },
                             ),
                             const SizedBox(height: 20),
-                            TextFormField(
-                              controller: _confirmPasswordController,
-                              obscureText: true,
-                              decoration: InputDecoration(
-                                labelText: "Confirm Password",
-                                filled: true,
-                                fillColor: Colors.grey[200],
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide.none,
-                                ),
-                                contentPadding: const EdgeInsets.symmetric(
-                                    horizontal: 20, vertical: 15),
-                              ),
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Please confirm your password';
-                                } else if (value != _passwordController.text) {
-                                  return 'Passwords do not match';
-                                }
-                                return null;
-                              },
-                            ),
+                            // TextFormField(
+                            //   controller: _confirmPasswordController,
+                            //   obscureText: true,
+                            //   decoration: InputDecoration(
+                            //     labelText: "Confirm Password",
+                            //     filled: true,
+                            //     fillColor: Colors.grey[200],
+                            //     border: OutlineInputBorder(
+                            //       borderRadius: BorderRadius.circular(10),
+                            //       borderSide: BorderSide.none,
+                            //     ),
+                            //     contentPadding: const EdgeInsets.symmetric(
+                            //         horizontal: 20, vertical: 15),
+                            //   ),
+                            //   validator: (value) {
+                            //     if (value == null || value.isEmpty) {
+                            //       return 'Please confirm your password';
+                            //     } else if (value != _passwordController.text) {
+                            //       return 'Passwords do not match';
+                            //     }
+                            //     return null;
+                            //   },
+                            // ),
                             const SizedBox(height: 20),
+                            // MaterialButton(
+                            //   onPressed: () {
+                            //     if (_formKey.currentState!.validate()) {
+                            //       Navigator.push(
+                            //         context,
+                            //         MaterialPageRoute(
+                            //           builder: (context) => LoginView(),
+                            //         ),
+                            //       );
+                            //     }
+                            //   },
+                            //   height: 50,
+                            //   minWidth: double.infinity,
+                            //   color: Colors.orange[900],
+                            //   shape: RoundedRectangleBorder(
+                            //     borderRadius: BorderRadius.circular(25),
+                            //   ),
+                            //   child: const Text(
+                            //     "Register",
+                            //     style: TextStyle(
+                            //       color: Colors.white,
+                            //       fontWeight: FontWeight.bold,
+                            //       fontSize: 16,
+                            //     ),
+                            //   ),
+                            // ),
                             MaterialButton(
                               onPressed: () {
-                                if (_formKey.currentState!.validate()) {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => LoginView(),
-                                    ),
-                                  );
+                                //   if (_formKey.currentState!.validate()) {
+                                //     ScaffoldMessenger.of(context).showSnackBar(
+                                //       const SnackBar(
+                                //         content: Text('Register Successful!'),
+                                //         duration: Duration(seconds: 2),
+                                //       ),
+                                //     );
+
+                                //     Future.delayed(const Duration(seconds: 2),
+                                //         () {
+                                //       Navigator.push(
+                                //         context,
+                                //         MaterialPageRoute(
+                                //           builder: (context) => LoginView(),
+                                //         ),
+                                //       );
+                                //     });
+                                //   }
+                                if (_key.currentState!.validate()) {
+                                  context.read<RegisterBloc>().add(
+                                        RegisterUser(
+                                            context: context,
+                                            fullname: _fullNameController.text,
+                                            phone: _phoneController.text,
+                                            email: _emailController.text,
+                                            password: _passwordController.text
+                                            // cpassword: _confirmPasswordController.text,
+                                            ),
+                                      );
                                 }
                               },
                               height: 50,
@@ -359,21 +439,22 @@ class _RegistrationViewState extends State<RegistrationView> {
                                 ),
                               ),
                             ),
+
                             const SizedBox(height: 20),
-                            TextButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => LoginView(),
-                                  ),
-                                );
-                              },
-                              child: const Text(
-                                "Already have an account? Login",
-                                style: TextStyle(color: Colors.grey),
-                              ),
-                            ),
+                            // TextButton(
+                            //   onPressed: () {
+                            //     Navigator.push(
+                            //       context,
+                            //       MaterialPageRoute(
+                            //         builder: (context) => LoginView(),
+                            //       ),
+                            //     );
+                            //   },
+                            //   child: const Text(
+                            //     "Already have an account? Login",
+                            //     style: TextStyle(color: Colors.grey),
+                            //   ),
+                            // ),
                           ],
                         ),
                       ),

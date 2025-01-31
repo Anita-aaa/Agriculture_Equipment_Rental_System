@@ -4,6 +4,7 @@
 // void main() {
 //   runApp(const MyApp());
 // }
+
 import 'package:agriculture_equipment_rental_system/app/app.dart';
 import 'package:agriculture_equipment_rental_system/app/di/di.dart';
 import 'package:agriculture_equipment_rental_system/core/network/hive_service.dart';
