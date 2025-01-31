@@ -5,7 +5,7 @@ import 'package:agriculture_equipment_rental_system/features/auth/domain/use_cas
 import 'package:agriculture_equipment_rental_system/features/auth/domain/use_case/register_user_usecase.dart';
 import 'package:agriculture_equipment_rental_system/features/auth/presentation/view_model/login/login_bloc.dart';
 import 'package:agriculture_equipment_rental_system/features/auth/presentation/view_model/signup/register_bloc.dart';
-import 'package:agriculture_equipment_rental_system/features/home/presentation/view_model/cubit/home_cubit.dart';
+import 'package:agriculture_equipment_rental_system/features/home/presentation/view_model/home_cubit.dart';
 import 'package:agriculture_equipment_rental_system/features/splash/presentation/view_model/splash_cubit.dart';
 import 'package:get_it/get_it.dart';
 
@@ -14,6 +14,7 @@ final getIt = GetIt.instance;
 Future<void> initDependencies() async {
   // First initialize hive service
   await _initHiveService();
+  // await _initApiService();
 
   await _initHomeDependencies();
   await _initRegisterDependencies();
@@ -21,6 +22,13 @@ Future<void> initDependencies() async {
 
   await _initSplashScreenDependencies();
 }
+
+// _initApiService() {
+//   //
+//   getIt.registerLazySingleton<Dio>(
+//     () => _initApiService()(Dio()).dio,
+//   );
+// }
 
 _initHiveService() {
   getIt.registerLazySingleton<HiveService>(() => HiveService());
@@ -44,13 +52,13 @@ _initRegisterDependencies() {
     ),
   );
 
-  // getIt.registerFactory<RegisterBloc>(
-  //   () => RegisterBloc(
-  //     batchBloc: getIt<BatchBloc>(),
-  //     courseBloc: getIt<CourseBloc>(),
-  //     registerUseCase: getIt(),
-  //   ),
-  // );
+  getIt.registerFactory<RegisterBloc>(
+    () => RegisterBloc(
+      // batchBloc: getIt<BatchBloc>(),
+      // courseBloc: getIt<CourseBloc>(),
+      registerUseCase: getIt(),
+    ),
+  );
 }
 
 _initHomeDependencies() async {
@@ -60,6 +68,7 @@ _initHomeDependencies() async {
 }
 
 _initLoginDependencies() async {
+  //local
   getIt.registerLazySingleton<LoginUseCase>(
     () => LoginUseCase(
       getIt<AuthLocalRepository>(),

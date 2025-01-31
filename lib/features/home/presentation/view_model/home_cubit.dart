@@ -1,7 +1,7 @@
 import 'package:agriculture_equipment_rental_system/app/di/di.dart';
 import 'package:agriculture_equipment_rental_system/features/auth/presentation/view/login_view.dart';
 import 'package:agriculture_equipment_rental_system/features/auth/presentation/view_model/login/login_bloc.dart';
-import 'package:agriculture_equipment_rental_system/features/home/presentation/view_model/cubit/home_state.dart';
+import 'package:agriculture_equipment_rental_system/features/home/presentation/view_model/home_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

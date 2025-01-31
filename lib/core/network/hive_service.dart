@@ -39,7 +39,7 @@ class HiveService {
   // Auth Queries
   Future<void> register(AuthHiveModel auth) async {
     var box = await Hive.openBox<AuthHiveModel>(HiveTableConstant.studentBox);
-    await box.put(auth.userId, auth);
+    await box.put(auth.customerId, auth);
   }
 
   Future<void> deleteAuth(String id) async {
@@ -62,10 +62,10 @@ class HiveService {
     // return auth;
 
     var box = await Hive.openBox<AuthHiveModel>(HiveTableConstant.studentBox);
-    var student = box.values.firstWhere(
+    var auth = box.values.firstWhere(
         (element) => element.email == email && element.password == password);
     box.close();
-    return student;
+    return auth;
   }
 
   Future<void> clearAll() async {
