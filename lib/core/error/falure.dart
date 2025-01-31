@@ -14,9 +14,13 @@ class LocalDatabaseFailure extends Failure {
 }
 
 class ApiFailure extends Failure {
-  final int statusCode;
-  const ApiFailure(
-    this.statusCode, {
+  final int? statusCode;
+  const ApiFailure({
+    this.statusCode,
     required super.message,
   });
+  // const ApiFailure(
+  //   this.statusCode, {
+  //   required super.message,
+  // });
 }

@@ -23,7 +23,7 @@ class AuthRemoteDatasource implements IAuthDataSource {
       Response response = await _dio.post(
         ApiEndPoints.login,
         data: {
-          "username": email,
+          "email": email,
           "password": password,
         },
       );
@@ -43,7 +43,7 @@ class AuthRemoteDatasource implements IAuthDataSource {
   Future<void> registerUser(AuthEntity student) async {
     try {
       Response response = await _dio.post(ApiEndPoints.register, data: {
-        "fname": student.fullName,
+        "fullName": student.fullName,
         "phone": student.phone,
         "email": student.email,
         "password": student.password,
