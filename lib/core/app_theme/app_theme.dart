@@ -40,7 +40,7 @@ class AppTheme {
       // Change app bar color
       appBarTheme: AppBarTheme(
         elevation: 0,
-        backgroundColor: ThemeConstant.projectColor,
+        backgroundColor: ThemeConstant.appBarColor,
         centerTitle: true,
         titleTextStyle: const TextStyle(
           color: Colors.white,
