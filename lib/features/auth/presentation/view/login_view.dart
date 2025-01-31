@@ -143,6 +143,14 @@ class LoginView extends StatelessWidget {
                               //         fontWeight: FontWeight.bold),
                               //   ),
                               // ),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor:
+                                    Colors.orange, // Set button color to orange
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(
+                                      10), // Optional: Adjust border radius
+                                ),
+                              ),
                               child: const SizedBox(
                                 height: 50,
                                 child: Center(
@@ -167,6 +175,14 @@ class LoginView extends StatelessWidget {
                                       ),
                                     );
                               },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor:
+                                    Colors.orange, // Set button color to orange
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(
+                                      10), // Optional: Adjust border radius
+                                ),
+                              ),
                               child: const SizedBox(
                                 height: 50,
                                 child: Center(

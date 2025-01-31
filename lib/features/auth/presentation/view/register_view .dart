@@ -186,7 +186,7 @@ class _RegistrationViewState extends State<RegistrationView> {
       appBar: AppBar(
         title:
             BlocBuilder<RegisterBloc, RegisterState>(builder: (context, state) {
-          return const Text('Register Student');
+          return const Text('Register User');
         }),
       ),
       resizeToAvoidBottomInset: true,
@@ -215,13 +215,17 @@ class _RegistrationViewState extends State<RegistrationView> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          "Register",
-                          style: TextStyle(color: Colors.white, fontSize: 32),
+                          "Join us today and rent the best agricultural equipment",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontStyle: FontStyle.italic,
+                          ),
                         ),
-                        SizedBox(height: 5),
+                        SizedBox(height: 10),
                         Text(
                           "Create Your Account",
-                          style: TextStyle(color: Colors.white, fontSize: 16),
+                          style: TextStyle(color: Colors.white, fontSize: 20),
                         ),
                       ],
                     ),
