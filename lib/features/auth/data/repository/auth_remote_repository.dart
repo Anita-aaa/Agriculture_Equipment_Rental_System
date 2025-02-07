@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:agriculture_equipment_rental_system/core/error/falure.dart';
 import 'package:agriculture_equipment_rental_system/features/auth/data/data_source/auth_remote_datasource/auth_remote_datasource.dart';
 import 'package:agriculture_equipment_rental_system/features/auth/domain/entity/auth_entity.dart';
@@ -41,6 +43,16 @@ class AuthRemoteRepository implements IAuthRepository {
           message: e.toString(),
         ),
       );
+    }
+  }
+
+  @override
+  Future<Either<Failure, String>> uploadProfilePicture(File file) async {
+    try {
+      final imageName = await _authRemoteDatasource.uploadProfilePicture(file);
+      return Right(imageName);
+    } catch (e) {
+      return Left(ApiFailure(message: e.toString()));
     }
   }
 }

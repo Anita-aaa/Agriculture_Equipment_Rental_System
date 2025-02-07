@@ -1,56 +1,33 @@
 part of 'register_bloc.dart';
 
-class RegisterState {
+class RegisterState extends Equatable {
   final bool isLoading;
   final bool isSuccess;
+  final String? imageName;
 
-  RegisterState({
+  const RegisterState({
     required this.isLoading,
     required this.isSuccess,
+    this.imageName,
   });
 
-  RegisterState.initial()
+  const RegisterState.initial()
       : isLoading = false,
-        isSuccess = false;
+        isSuccess = false,
+        imageName = null;
 
   RegisterState copyWith({
     bool? isLoading,
     bool? isSuccess,
+    String? imageName,
   }) {
     return RegisterState(
       isLoading: isLoading ?? this.isLoading,
       isSuccess: isSuccess ?? this.isSuccess,
+      imageName: imageName ?? this.imageName,
     );
   }
+
+  @override
+  List<Object?> get props => [isLoading, isSuccess, imageName];
 }
-
-// part of 'register_bloc.dart';
-
-// class RegisterState extends Equatable {
-//   final bool isLoading;
-//   final bool isSuccess;
-//   final String? errorMessage;
-//   const RegisterState({
-//     required this.isLoading,
-//     required this.isSuccess,
-//     this.errorMessage,
-//   });
-//   factory RegisterState.initial() {
-//     return const RegisterState(
-//         isLoading: false, isSuccess: false, errorMessage: null);
-//   }
-//   RegisterState copyWith({
-//     bool? isLoading,
-//     bool? isSuccess,
-//     String? errorMessage,
-//   }) {
-//     return RegisterState(
-//       isLoading: isLoading ?? this.isLoading,
-//       isSuccess: isSuccess ?? this.isSuccess,
-//       errorMessage: errorMessage,
-//     );
-//   }
-
-//   @override
-//   List<Object?> get props => [isLoading, isSuccess, errorMessage];
-// }

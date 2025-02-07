@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:agriculture_equipment_rental_system/core/network/hive_service.dart';
 import 'package:agriculture_equipment_rental_system/features/auth/data/data_source/auth_data_source.dart';
 import 'package:agriculture_equipment_rental_system/features/auth/data/model/auth_hive_model.dart';
@@ -41,5 +43,11 @@ class AuthLocalDataSource implements IAuthDataSource {
     } catch (e) {
       return Future.error(e);
     }
+  }
+
+  @override
+  Future<String> uploadProfilePicture(File file) {
+    // TODO: implement uploadProfilePicture
+    throw UnimplementedError();
   }
 }

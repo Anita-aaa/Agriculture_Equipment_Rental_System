@@ -4,6 +4,7 @@ import 'package:agriculture_equipment_rental_system/features/auth/data/data_sour
 import 'package:agriculture_equipment_rental_system/features/auth/data/repository/auth_remote_repository.dart';
 import 'package:agriculture_equipment_rental_system/features/auth/domain/use_case/login_usecase.dart';
 import 'package:agriculture_equipment_rental_system/features/auth/domain/use_case/register_user_usecase.dart';
+import 'package:agriculture_equipment_rental_system/features/auth/domain/use_case/upload_image_usecase.dart';
 import 'package:agriculture_equipment_rental_system/features/auth/presentation/view_model/login/login_bloc.dart';
 import 'package:agriculture_equipment_rental_system/features/auth/presentation/view_model/signup/register_bloc.dart';
 import 'package:agriculture_equipment_rental_system/features/home/presentation/view_model/home_cubit.dart';
@@ -65,18 +66,24 @@ _initRegisterDependencies() {
       getIt<AuthRemoteDatasource>(),
     ),
   );
+  // Register UseCase (Switch between Local and Remote)
+  getIt.registerLazySingleton<RegisterUseCase>(
+    () => RegisterUseCase(
+      getIt<AuthRemoteRepository>(), // Using Remote Repository here
+    ),
+  );
+  getIt.registerLazySingleton<UploadImageUsecase>(
+    () => UploadImageUsecase(
+      getIt<AuthRemoteRepository>(),
+    ),
+  );
 
   getIt.registerFactory<RegisterBloc>(
     () => RegisterBloc(
       // batchBloc: getIt<BatchBloc>(),
       // courseBloc: getIt<CourseBloc>(),
       registerUseCase: getIt(),
-    ),
-  );
-  // Register UseCase (Switch between Local and Remote)
-  getIt.registerLazySingleton<RegisterUseCase>(
-    () => RegisterUseCase(
-      getIt<AuthRemoteRepository>(), // Using Remote Repository here
+      uploadImageUsecase: getIt(),
     ),
   );
 }
