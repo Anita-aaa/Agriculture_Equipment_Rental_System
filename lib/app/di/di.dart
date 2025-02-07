@@ -1,3 +1,4 @@
+import 'package:agriculture_equipment_rental_system/app/shared_prefs/token_shared_prefs.dart';
 import 'package:agriculture_equipment_rental_system/core/network/api_service.dart';
 import 'package:agriculture_equipment_rental_system/core/network/hive_service.dart';
 import 'package:agriculture_equipment_rental_system/features/auth/data/data_source/auth_remote_datasource/auth_remote_datasource.dart';
@@ -11,6 +12,7 @@ import 'package:agriculture_equipment_rental_system/features/home/presentation/v
 import 'package:agriculture_equipment_rental_system/features/splash/presentation/view_model/splash_cubit.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 final getIt = GetIt.instance;
 
@@ -18,12 +20,19 @@ Future<void> initDependencies() async {
   // First initialize hive service
   await _initHiveService();
   await _initApiService();
+  await _initSharedPreferences();
+  await _initSharedPreferences();
 
   await _initHomeDependencies();
   await _initRegisterDependencies();
   await _initLoginDependencies();
 
   await _initSplashScreenDependencies();
+}
+
+Future<void> _initSharedPreferences() async {
+  final sharedPreferences = await SharedPreferences.getInstance();
+  getIt.registerLazySingleton<SharedPreferences>(() => sharedPreferences);
 }
 
 _initApiService() {
@@ -102,10 +111,15 @@ _initLoginDependencies() async {
   //   ),
   // );
 
-  //remote
+  // =========================== Token Shared Preferences ===========================
+  getIt.registerLazySingleton<TokenSharedPrefs>(
+    () => TokenSharedPrefs(getIt<SharedPreferences>()),
+  );
+  //remote Usecases
   getIt.registerLazySingleton<LoginUseCase>(
     () => LoginUseCase(
       getIt<AuthRemoteRepository>(),
+      getIt<TokenSharedPrefs>(),
     ),
   );
 
