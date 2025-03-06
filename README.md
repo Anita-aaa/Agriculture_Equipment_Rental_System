@@ -12,3 +12,7 @@ Farmers often struggle to find the right agricultural machinery for rent, leadin
 •	 Providing both growers and bulk buyers with cost efficient transporters. 
 •	Save money and time by renting farm machinery
 
+![Image](https://github.com/user-attachments/assets/418b16f9-9d14-4f81-ad75-e8162abba244)
+
+
+![Image](https://github.com/user-attachments/assets/1133627a-e1a3-454d-b518-6be0cc8eccf8)
