@@ -1,16 +1,14 @@
 # agriculture_equipment_rental_system
 
-A new Flutter project.
+## Introduction
+FarmBuddy is an intuitive equipment rental platform designed to help farmers easily access and rent agricultural tools and machinery. The app offers cost-effective options, reducing financial burdens while improving farming productivity. By leveraging technology, the platform provides smart solutions for machinery rental, addressing common farming challenges and promoting sustainable agriculture.
 
-## Getting Started
+## Problem Statement
+Farmers often struggle to find the right agricultural machinery for rent, leading to delays and decreased productivity in their farming operations. FarmEase addresses this challenge by offering a platform where farmers can easily locate available machinery nearby.
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+## Objectives
+•	providing agro-products with a real-time online marketplace and removing middleman/brokerage. 
+•	 Providing both growers and bulk buyers with cost efficient transporters. 
+•	Save money and time by renting farm machinery
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
